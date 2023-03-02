@@ -34,8 +34,7 @@ contactSchema.post("save", handleValidateSchemaErrors);
 const joiContactSchema = Joi.object({
   name: Joi.string().required(),
   email: Joi.string()
-    .email({ tlds: { allow: false } })
-    .required(),
+    .email({ tlds: { allow: false } }),
   phone: Joi.string().required(),
   favorite: Joi.bool(),
 });
