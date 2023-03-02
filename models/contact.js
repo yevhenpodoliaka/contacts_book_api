@@ -13,7 +13,7 @@ const contactSchema = new Schema(
     },
     phone: {
       type: String,
-      unique: true,
+      unique: [true, "contact with this number already exists"],
       required: [true, "Set phone number for contact"],
     },
     favorite: {
