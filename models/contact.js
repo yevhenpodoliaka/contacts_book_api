@@ -13,7 +13,7 @@ const contactSchema = new Schema(
     },
     phone: {
       type: String,
-      unique: [true, "contact with this number already exists"],
+      unique: true,
       required: [true, "Set phone number for contact"],
     },
     favorite: {
@@ -33,8 +33,7 @@ contactSchema.post("save", handleValidateSchemaErrors);
 
 const joiContactSchema = Joi.object({
   name: Joi.string().required(),
-  email: Joi.string()
-    .email({ tlds: { allow: false } }),
+  email: Joi.string().min(0),
   phone: Joi.string().required(),
   favorite: Joi.bool(),
 });
